@@ -1,0 +1,29 @@
+{% block title 'Andrea Catozzi' %}
+
+    {% block body %}
+    {% block content_header %}
+        <div>
+            <div><a href="/">Home</a></div>
+            <div><a href="/biography">Bio</a></div>
+            <div><a href="/contact">Contact</a></div>
+            <div><a href="/pictures">Photos</a></div>
+            <div><a href="/videos">Vidéos</a></div>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <div><a href="/admin">Home Admin</a></div>
+            <div><a href="/admin/biography">Bio</a></div>
+            <div><a href="/admin/contact">Contact</a></div>
+            <div><a href="/admin/pictures">Photos</a></div>
+            <div><a href="/admin/videos">Vidéos</a></div>
+
+            <div><a href="/logout">Page de déconnection BO</a></div>
+        </div>
+
+        <div style="clear: both"></div>
+    {% endblock %}
+
+    <div class="block">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

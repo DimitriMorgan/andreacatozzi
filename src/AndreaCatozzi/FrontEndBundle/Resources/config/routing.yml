@@ -1,3 +1,23 @@
 andrea_catozzi_front_end_homepage:
-    path:     /hello/{name}
+    path:     /
     defaults: { _controller: AndreaCatozziFrontEndBundle:Default:index }
+
+andrea_catozzi_front_end_biography:
+    path:     /biography
+    defaults: { _controller: AndreaCatozziFrontEndBundle:Default:biography }
+
+andrea_catozzi_front_end_contact:
+    path:     /contact
+    defaults: { _controller: AndreaCatozziFrontEndBundle:Default:contact }
+
+andrea_catozzi_front_end_pictures:
+    path:     /pictures
+    defaults: { _controller: AndreaCatozziFrontEndBundle:Default:pictures }
+
+andrea_catozzi_front_end_videos:
+    path:     /videos
+    defaults: { _controller: AndreaCatozziFrontEndBundle:Default:videos }
+
+andrea_catozzi_back_office_access:
+    path:     /admin
+    defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:index }
