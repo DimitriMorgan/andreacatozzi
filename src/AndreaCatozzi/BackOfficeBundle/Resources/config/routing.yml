@@ -1,19 +1,19 @@
-andrea_catozzi_back_office_homepage:
+back_office_homepage:
     path:     /admin
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:index }
 
-andrea_catozzi_back_office_biography:
+back_office_biography:
     path:     /admin/biography
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:biography }
 
-andrea_catozzi_back_office_contact:
+back_office_contact:
     path:     /admin/contact
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:contact }
 
-andrea_catozzi_back_office_pictures:
+back_office_pictures:
     path:     /admin/pictures
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:pictures }
 
-andrea_catozzi_back_office_videos:
+back_office_videos:
     path:     /admin/videos
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:videos }
