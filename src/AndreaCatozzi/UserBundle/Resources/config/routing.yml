@@ -1,0 +1,3 @@
+andrea_catozzi_user_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: AndreaCatozziUserBundle:Default:index }

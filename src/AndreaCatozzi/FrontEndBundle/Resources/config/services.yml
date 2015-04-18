@@ -1,0 +1,4 @@
+services:
+#    andrea_catozzi_front_end.example:
+#        class: AndreaCatozzi\FrontEndBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

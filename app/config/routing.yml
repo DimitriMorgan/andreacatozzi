@@ -1,3 +1,15 @@
+andrea_catozzi_back_office:
+    resource: "@AndreaCatozziBackOfficeBundle/Resources/config/routing.yml"
+    prefix:   /
+
+andrea_catozzi_front_end:
+    resource: "@AndreaCatozziFrontEndBundle/Resources/config/routing.yml"
+    prefix:   /
+
+andrea_catozzi_user:
+    resource: "@AndreaCatozziUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
