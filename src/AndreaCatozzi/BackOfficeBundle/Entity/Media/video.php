@@ -1,13 +1,13 @@
 <?php
 
-namespace AndreaCatozzi\BackOfficeBundle\Entity;
+namespace AndreaCatozzi\BackOfficeBundle\Entity\Media;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * video
  *
- * @ORM\Table()
+ * @ORM\Table(name="videos")
  * @ORM\Entity(repositoryClass="AndreaCatozzi\BackOfficeBundle\Entity\videoRepository")
  */
 class video

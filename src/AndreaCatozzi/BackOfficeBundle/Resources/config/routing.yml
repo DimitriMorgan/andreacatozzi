@@ -10,14 +10,6 @@ back_office_contact:
     path:     /admin/contact
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:contact }
 
-back_office_pictures:
-    path:     /admin/pictures
-    defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:pictures }
-
-back_office_videos:
-    path:     /admin/videos
-    defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:videos }
-
 login:
     path:     /login
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:login }
