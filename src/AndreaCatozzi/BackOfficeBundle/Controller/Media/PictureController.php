@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use AndreaCatozzi\BackOfficeBundle\Entity\Media\Picture;
 use AndreaCatozzi\BackOfficeBundle\Form\Media\PictureType;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * Media\Picture controller.
@@ -49,6 +50,9 @@ class PictureController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $entity->setCreatedAt(new \DateTime('now'));
+            $entity->setUpdatedAt(new \DateTime("now"));
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
