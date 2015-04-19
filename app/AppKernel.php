@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new AndreaCatozzi\UserBundle\AndreaCatozziUserBundle(),
             new AndreaCatozzi\FrontEndBundle\AndreaCatozziFrontEndBundle(),
             new AndreaCatozzi\BackOfficeBundle\AndreaCatozziBackOfficeBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
