@@ -7,6 +7,27 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block menu %}
+            <div class="col-sm-12">
+                <a href="{{ path('front_end_homepage') }}">home</a>
+                <a href="{{ path('front_end_biography') }}">Bio</a>
+                <a href="{{ path('front_end_contact') }}">Contact</a>
+                <a href="{{ path('front_end_pictures') }}">Photos</a>
+                <a href="{{ path('front_end_videos') }}">Vidéos</a>
+                <a href="{{ path('back_office_access') }}">Admin</a>
+            </div>
+        {% endblock %}
+
+        {# flash message #}
+        {% for flashMessages in app.session.flashbag.all() %}
+            {% for flashMessage in flashMessages %}
+                <div class="flash-message">
+                    <p>{{ flashMessage }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {# end flash message #}
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
