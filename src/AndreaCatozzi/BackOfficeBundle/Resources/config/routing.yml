@@ -17,3 +17,7 @@ back_office_pictures:
 back_office_videos:
     path:     /admin/videos
     defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:videos }
+
+login:
+    path:     /login
+    defaults: { _controller: AndreaCatozziBackOfficeBundle:Default:login }
