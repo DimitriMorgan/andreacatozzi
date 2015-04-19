@@ -17,7 +17,7 @@ class PictureType extends AbstractType
         $builder
             ->add('name')
             ->add('description')
-            ->add('path')
+            ->add('path', 'file', array('data_class' => null))
             ->add('alt')
         ;
     }
