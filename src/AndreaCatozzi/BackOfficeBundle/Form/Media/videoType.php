@@ -1,10 +1,11 @@
 <?php
 
-namespace AndreaCatozzi\BackOfficeBundle\Form;
+namespace AndreaCatozzi\BackOfficeBundle\Form\Media;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class videoType extends AbstractType
 {
@@ -20,8 +21,23 @@ class videoType extends AbstractType
         $builder->add('description', 'textarea');
         $builder->add('path');
     }
+
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'AndreaCatozzi\BackOfficeBundle\Entity\Media\video'
+        ));
+    }
+
+    /**
+     * @return string
+     */
     public function getName()
     {
-        return 'videoForm';
+        return 'andreacatozzi_backofficebundle_media_video';
     }
+
 }
