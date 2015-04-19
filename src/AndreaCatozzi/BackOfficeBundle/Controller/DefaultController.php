@@ -28,11 +28,6 @@ class DefaultController extends Controller
         return $this->render('AndreaCatozziBackOfficeBundle:Default:pictures.html.twig');
     }
 
-    public function videosAction()
-    {
-        return $this->render('AndreaCatozziBackOfficeBundle:Default:videos.html.twig');
-    }
-
     public function loginAction(Request $request)
     {
         $authenticationUtils = $this->get('security.authentication_utils');
