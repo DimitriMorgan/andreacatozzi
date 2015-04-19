@@ -3,10 +3,12 @@
 namespace AndreaCatozzi\BackOfficeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class DefaultController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         return $this->render('AndreaCatozziBackOfficeBundle:Default:index.html.twig');
     }
@@ -29,5 +31,31 @@ class DefaultController extends Controller
     public function videosAction()
     {
         return $this->render('AndreaCatozziBackOfficeBundle:Default:videos.html.twig');
+    }
+
+    public function loginAction(Request $request)
+    {
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+
+        // last username entered by the user
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render(
+            'AndreaCatozziBackOfficeBundle:Default:login.html.twig',
+            array(
+                // last username entered by the user
+                'last_username' => $lastUsername,
+                'error'         => $error,
+            )
+        );
+    }
+
+    public function loginCheckAction()
+    {
+        // this controller will not be executed,
+        // as the route is handled by the Security system
     }
 }
