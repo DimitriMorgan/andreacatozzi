@@ -17,6 +17,17 @@
                 <a href="{{ path('back_office_access') }}">Admin</a>
             </div>
         {% endblock %}
+
+        {# flash message #}
+        {% for flashMessages in app.session.flashbag.all() %}
+            {% for flashMessage in flashMessages %}
+                <div class="flash-message">
+                    <p>{{ flashMessage }}</p>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {# end flash message #}
+
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>

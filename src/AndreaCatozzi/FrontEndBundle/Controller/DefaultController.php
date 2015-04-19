@@ -28,17 +28,17 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $message = \Swift_Message::newInstance()
                 ->setSubject('Hey bro, tu a un nouveau message d\'un visiteur sur ton site !')
-                ->setFrom('andrea-catozzi@site.com')
+                ->setFrom('gauvin.thibaut83@gmail.com')
                 ->setTo('arkezis@hotmail.fr')
                 ->setBody($this->renderView('AndreaCatozziFrontEndBundle:Default:email.txt.twig', array('contact' => $contact)));
 
             $message->setContentType("text/html");
             $this->get('mailer')->send($message);
 
-//            $request->getSession()
-//                ->getFlashBag()
-//                ->add('success', 'Your Message has been successfully send')
-//            ;
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Votre message à bien été envoyé.')
+            ;
 
             return $this->redirect($this->generateUrl('front_end_contact'));
         }
