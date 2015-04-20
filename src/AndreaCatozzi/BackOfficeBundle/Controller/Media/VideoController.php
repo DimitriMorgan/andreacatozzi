@@ -2,23 +2,24 @@
 
 namespace AndreaCatozzi\BackOfficeBundle\Controller\Media;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use AndreaCatozzi\BackOfficeBundle\Entity\Media\video;
-use AndreaCatozzi\BackOfficeBundle\Form\Media\videoType;
+use AndreaCatozzi\BackOfficeBundle\Entity\Media\Video;
+use AndreaCatozzi\BackOfficeBundle\Form\Media\VideoType;
 
 /**
- * video controller.
+ * Media\Video controller.
  *
  * @Route("/admin/videos")
  */
-class DefaultController extends Controller
+class VideoController extends Controller
 {
+
     /**
-     * Lists all Media\video entities.
+     * Lists all Media\Video entities.
      *
      * @Route("/", name="admin_videos")
      * @Method("GET")
@@ -28,26 +29,35 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\video')->findAll();
+        $entities = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->findAll();
 
         return array(
             'entities' => $entities,
         );
     }
     /**
-     * Creates a new Media\video entity.
+     * Creates a new Media\Video entity.
      *
      * @Route("/", name="admin_videos_create")
      * @Method("POST")
-     * @Template("AndreaCatozziBackOfficeBundle:Media\video:new.html.twig")
+     * @Template("AndreaCatozziBackOfficeBundle:Media\Video:new.html.twig")
      */
     public function createAction(Request $request)
     {
-        $entity = new video();
+        $entity = new Video();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+
+            $entities = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->findAll();
+
+            $entity->setCreatedAt(new \DateTime('now'));
+            $entity->setUpdatedAt(new \DateTime("now"));
+            $entity->setPosition(count($entities) . + 1);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
@@ -62,15 +72,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a form to create a video entity.
+     * Creates a form to create a Media\Video entity.
      *
-     * @param video $entity The entity
+     * @param Video $entity The entity
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(video $entity)
+    private function createCreateForm(Video $entity)
     {
-        $form = $this->createForm(new videoType(), $entity, array(
+        $form = $this->createForm(new VideoType(), $entity, array(
             'action' => $this->generateUrl('admin_videos_create'),
             'method' => 'POST',
         ));
@@ -81,7 +91,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a form to create a new video entity.
+     * Displays a form to create a new Media\Video entity.
      *
      * @Route("/new", name="admin_videos_new")
      * @Method("GET")
@@ -89,7 +99,7 @@ class DefaultController extends Controller
      */
     public function newAction()
     {
-        $entity = new video();
+        $entity = new Video();
         $form   = $this->createCreateForm($entity);
 
         return array(
@@ -99,7 +109,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds and displays a Media\video entity.
+     * Finds and displays a Media\Video entity.
      *
      * @Route("/{id}", name="admin_videos_show")
      * @Method("GET")
@@ -109,10 +119,10 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\video')->find($id);
+        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find video entity.');
+            throw $this->createNotFoundException('Unable to find Media\Video entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -124,7 +134,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a form to edit an existing video entity.
+     * Displays a form to edit an existing Media\Video entity.
      *
      * @Route("/{id}/edit", name="admin_videos_edit")
      * @Method("GET")
@@ -134,10 +144,10 @@ class DefaultController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\video')->find($id);
+        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find video entity.');
+            throw $this->createNotFoundException('Unable to find Media\Video entity.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -151,15 +161,15 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a form to edit a video entity.
-     *
-     * @param video $entity The entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createEditForm(video $entity)
+    * Creates a form to edit a Media\Video entity.
+    *
+    * @param Video $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createEditForm(Video $entity)
     {
-        $form = $this->createForm(new videoType(), $entity, array(
+        $form = $this->createForm(new VideoType(), $entity, array(
             'action' => $this->generateUrl('admin_videos_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
@@ -169,20 +179,20 @@ class DefaultController extends Controller
         return $form;
     }
     /**
-     * Edits an existing video entity.
+     * Edits an existing Media\Video entity.
      *
      * @Route("/{id}", name="admin_videos_update")
      * @Method("PUT")
-     * @Template("AndreaCatozziBackOfficeBundle:Media\video:edit.html.twig")
+     * @Template("AndreaCatozziBackOfficeBundle:Media\Video:edit.html.twig")
      */
     public function updateAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\video')->find($id);
+        $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->find($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find video entity.');
+            throw $this->createNotFoundException('Unable to find Media\Video entity.');
         }
 
         $deleteForm = $this->createDeleteForm($id);
@@ -202,7 +212,7 @@ class DefaultController extends Controller
         );
     }
     /**
-     * Deletes a Media\video entity.
+     * Deletes a Media\Video entity.
      *
      * @Route("/{id}", name="admin_videos_delete")
      * @Method("DELETE")
@@ -214,10 +224,10 @@ class DefaultController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\video')->find($id);
+            $entity = $em->getRepository('AndreaCatozziBackOfficeBundle:Media\Video')->find($id);
 
             if (!$entity) {
-                throw $this->createNotFoundException('Unable to find video entity.');
+                throw $this->createNotFoundException('Unable to find Media\Video entity.');
             }
 
             $em->remove($entity);
@@ -228,7 +238,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a form to delete a Media\video    entity by id.
+     * Creates a form to delete a Media\Video entity by id.
      *
      * @param mixed $id The entity id
      *
@@ -241,6 +251,6 @@ class DefaultController extends Controller
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
-            ;
+        ;
     }
 }

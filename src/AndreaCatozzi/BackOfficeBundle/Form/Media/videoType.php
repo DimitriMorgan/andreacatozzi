@@ -7,7 +7,7 @@ use Symfony\Component\Form\Form;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class videoType extends AbstractType
+class VideoType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,10 +16,8 @@ class videoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name');
-        $builder->add('createdAt');
-        $builder->add('updatedAt');
         $builder->add('description', 'textarea');
-        $builder->add('path');
+        $builder->add('url');
     }
 
     /**
@@ -28,7 +26,7 @@ class videoType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AndreaCatozzi\BackOfficeBundle\Entity\Media\video'
+            'data_class' => 'AndreaCatozzi\BackOfficeBundle\Entity\Media\Video'
         ));
     }
 

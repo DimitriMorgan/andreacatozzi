@@ -6,26 +6,20 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
                 <th>Createdat</th>
                 <th>Updatedat</th>
-                <th>Path</th>
-                <th>Alt</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('admin_pictures_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.name }}</td>
+                <td><a href="{{ path('admin_pictures_show', { 'id': entity.id }) }}">{{ entity.name }}</a></td>
                 <td>{{ entity.description }}</td>
                 <td>{% if entity.createdAt %}{{ entity.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.path }}</td>
-                <td>{{ entity.alt }}</td>
                 <td>
                 <ul>
                     <li>
@@ -44,7 +38,7 @@
         <ul>
         <li>
             <a href="{{ path('admin_pictures_new') }}">
-                Create a new entry
+                Ajouter une nouvelle photo
             </a>
         </li>
     </ul>

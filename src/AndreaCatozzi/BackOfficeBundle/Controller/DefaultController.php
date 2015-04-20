@@ -43,7 +43,7 @@ class DefaultController extends Controller
             array(
                 // last username entered by the user
                 'last_username' => $lastUsername,
-                'error'         => $error,
+                'error'         => ($error) ? "Identifiants incorrects" : null,
             )
         );
     }

@@ -1,10 +1,10 @@
 <?php
 
-namespace AndreaCatozzi\BackOfficeBundle\Tests\Controller;
+namespace AndreaCatozzi\BackOfficeBundle\Tests\Controller\Media;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class videoControllerTest extends WebTestCase
+class VideoControllerTest extends WebTestCase
 {
     /*
     public function testCompleteScenario()
@@ -19,7 +19,7 @@ class videoControllerTest extends WebTestCase
 
         // Fill in the form and submit it
         $form = $crawler->selectButton('Create')->form(array(
-            'andreacatozzi_backofficebundle_video[field_name]'  => 'Test',
+            'andreacatozzi_backofficebundle_media_video[field_name]'  => 'Test',
             // ... other fields to fill
         ));
 
@@ -33,7 +33,7 @@ class videoControllerTest extends WebTestCase
         $crawler = $client->click($crawler->selectLink('Edit')->link());
 
         $form = $crawler->selectButton('Update')->form(array(
-            'andreacatozzi_backofficebundle_video[field_name]'  => 'Foo',
+            'andreacatozzi_backofficebundle_media_video[field_name]'  => 'Foo',
             // ... other fields to fill
         ));
 

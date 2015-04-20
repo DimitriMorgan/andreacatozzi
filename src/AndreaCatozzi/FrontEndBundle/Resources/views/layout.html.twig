@@ -1,30 +1,32 @@
-{% block title 'Andrea Catozzi' %}
+<html>
+    <body background="{{ asset('images/') }}{{ background }}">
+            <div style="border: 1px solid black; width: 200px; background: #ffffff">
+                {% block title 'Andrea Catozzi' %}
+            </div>
 
-    {% block body %}
-        {% block content_header %}
-            <div>
+            <div style="border: 1px solid black; width: 200px; background: #ffffff">
                 <div><a href="/">Home</a></div>
                 <div><a href="/biography">Bio</a></div>
                 <div><a href="/contact">Contact</a></div>
                 <div><a href="/pictures">Photos</a></div>
                 <div><a href="/videos">Vidéos</a></div>
+                <div><a href="/admin">Page de connection BO</a></div>
             </div>
-            <div><a href="/admin">Page de connection BO</a></div>
 
-            <div style="margin-top: 50px;">
+            <div style="border: 1px solid black; width: 200px; background: #ffffff; margin-top: 50px">
                 <div><a href="/admin">Home Admin</a></div>
-                <div><a href="/admin/biography">Bio</a></div>
-                <div><a href="/admin/contact">Contact</a></div>
-                <div><a href="/admin/pictures">Photos</a></div>
-                <div><a href="/admin/videos">Vidéos</a></div>
+                <div><a href="/admin/biography">Bio Admin</a></div>
+                <div><a href="/admin/contact">Contact Admin</a></div>
+                <div><a href="/admin/pictures">Photos Admin</a></div>
+                <div><a href="/admin/videos">Vidéos Admin</a></div>
 
                 <div><a href="/logout">Page de déconnection BO</a></div>
             </div>
 
             <div style="clear: both"></div>
-        {% endblock %}
 
-        <div class="block">
-            {% block content %}{% endblock %}
-        </div>
-    {% endblock %}
+            <div class="block">
+                {% block content %}{% endblock %}
+            </div>
+    </body>
+</html>

@@ -11,7 +11,9 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AndreaCatozziFrontEndBundle:Default:index.html.twig');
+        return $this->render(
+            'AndreaCatozziFrontEndBundle:Default:index.html.twig',
+            array('background' => 'Actus.jpg'));
     }
 
     public function biographyAction()

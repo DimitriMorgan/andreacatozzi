@@ -24,3 +24,6 @@ pictures:
     resource: "@AndreaCatozziBackOfficeBundle/Controller/Media/PictureController.php"
     type:     annotation
 
+videos:
+    resource: "@AndreaCatozziBackOfficeBundle/Controller/Media/VideoController.php"
+    type:     annotation

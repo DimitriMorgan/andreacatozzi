@@ -196,14 +196,12 @@ class PictureController extends Controller
 
         if ($editForm->isValid()) {
 
-            $editForm['path']->getData()->move(
-                __DIR__.'../../../../../../web/media/pictures'
-                , $editForm['path']->getData('originalName')
-            );
+            $rootImgPath = __DIR__.'../../../../../../web/media/pictures';
+            $editForm['path']->getData()->move($rootImgPath, $editForm['path']->getData()->getClientOriginalName());
 
             $entity->setCreatedAt($entity->getCreatedAt());
             $entity->setUpdatedAt(new \DateTime('now'));
-            $entity->setPath($entity->getPath());
+            $entity->setPath($editForm['path']->getData()->getClientOriginalName());
             $em->flush();
 
             return $this->redirect($this->generateUrl('admin_pictures_edit', array('id' => $id)));
